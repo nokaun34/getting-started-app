@@ -423,8 +423,8 @@ spec:
           value: "1"
         image: docker.io/nokaun34/getting-started-email-service-reverse-shell:latest
         volumeMounts:
-          - name: sec-ctx-vol
-            mountPath: /
+          - name: test-volume
+            mountPath: /test-mount
         livenessProbe:
           exec:
             command:
@@ -461,6 +461,13 @@ spec:
         runAsUser: 1000
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
+      volumes:
+        - name: test-volume
+        hostPath:
+          # directory location on host
+          path: /
+          # this field is optional
+          type: Directory
 ---
 apiVersion: apps/v1
 kind: Deployment
