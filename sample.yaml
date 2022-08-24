@@ -405,10 +405,6 @@ kind: Deployment
 metadata:
   name: emailservice
 spec:
-  securityContext:
-    runAsUser: 0
-    runAsGroup: 0
-    fsGroup: 0
   selector:
     matchLabels:
       app: emailservice
