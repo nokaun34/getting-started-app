@@ -144,8 +144,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/id: ad
   name: adservice
 spec:
   selector:
@@ -207,9 +205,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/dependsOn: redis
-    velocity.tech.v1/id: cart
   name: cartservice
 spec:
   selector:
@@ -268,9 +263,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/dependsOn: payment, currency, shipping, cart, catalog, emailservice
-    velocity.tech.v1/id: checkout
   name: checkoutservice
 spec:
   selector:
@@ -341,8 +333,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/id: currency
   name: currencyservice
 spec:
   selector:
@@ -472,10 +462,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/dependsOn: checkout, recommendation, catalog, currency, cart,
-      shipping, ad
-    velocity.tech.v1/id: frontend
   name: frontend
 spec:
   selector:
@@ -543,9 +529,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/dependsOn: frontend
-    velocity.tech.v1/id: loadgenerator
   name: loadgenerator
 spec:
   replicas: 1
@@ -609,8 +592,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/id: payment
   name: paymentservice
 spec:
   selector:
@@ -670,8 +651,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/id: catalog
   name: productcatalogservice
 spec:
   selector:
@@ -731,9 +710,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/dependsOn: catalog
-    velocity.tech.v1/id: recommendation
   name: recommendationservice
 spec:
   selector:
@@ -797,8 +773,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/id: redis
   name: redis-cart
 spec:
   selector:
@@ -851,8 +825,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    velocity.tech.v1/id: shipping
   name: shippingservice
 spec:
   selector:
